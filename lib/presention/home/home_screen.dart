@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
    children : [
      SubjectView(pageController: pageController,),
-     TeacherScreen()
+     TeacherScreen(pageController: pageController,)
    ] );
   }
 }

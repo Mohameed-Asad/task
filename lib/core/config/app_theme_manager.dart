@@ -21,6 +21,16 @@ class AppThemeManager {
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: Color(0xFF010B2E)),
+      bodySmall: TextStyle(
+          fontFamily: "Poppins",
+          fontSize: 12,
+          fontWeight: FontWeight.normal,
+          color: secColor),
+      displayMedium: TextStyle(
+          fontFamily: "Poppins",
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: Colors.white),
     ),
   );
 }

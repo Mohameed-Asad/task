@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
   final Function()? onPressed;
   final double? width;
   final double? height;
-  final IconData? icon;
+  final Widget? icon;
   final Color? color;
   final double fontSize;
 
@@ -48,11 +48,7 @@ class CustomButton extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               if (icon != null)
-                Icon(
-                  icon,
-                  size: 16,
-                  color: color ?? Colors.black,
-                ),
+                icon!,
             ],
           ),
         ),

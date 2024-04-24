@@ -22,8 +22,8 @@ class _SubjectViewState extends State<SubjectView> {
       backgroundColor: Colors.white,
       body: Column(children: [
         Container(
-          height: 183,
-          width: 428,
+          height: Constants.mediaQuery.height * 0.2,
+          width: Constants.mediaQuery.width,
           decoration: const BoxDecoration(
               color: AppThemeManager.primaryColor,
               borderRadius: BorderRadius.only(
