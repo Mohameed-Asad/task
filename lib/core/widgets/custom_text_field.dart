@@ -76,7 +76,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       textInputAction: widget.action ?? TextInputAction.next,
       focusNode: widget.focusNode,
       decoration: InputDecoration(
-        fillColor: Colors.grey.withOpacity(0.1),
+        fillColor: Colors.white,
         filled: true,
         suffixIcon: widget.isPassword ?? false
             ? InkWell(
@@ -107,7 +107,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         // suffix: isPass widget.suffixWidget,
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(

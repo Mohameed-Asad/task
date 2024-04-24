@@ -5,7 +5,9 @@ import 'package:task_1/core/widgets/custom_button.dart';
 import 'package:task_1/presention/subject_screen/subject_widget.dart';
 
 class SubjectView extends StatefulWidget {
-  const SubjectView({super.key});
+  final PageController pageController;
+
+  const SubjectView({super.key, required this.pageController});
 
   @override
   State<SubjectView> createState() => _SubjectViewState();
@@ -128,9 +130,16 @@ class _SubjectViewState extends State<SubjectView> {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.only(left : 85 , right: 85 , bottom: 20, top : 12),
-          child: CustomButton(title: "Next",),
+        Padding(
+          padding: const EdgeInsets.only(left: 85, right: 85, bottom: 20, top: 12),
+          child: CustomButton(
+            title: "Next",
+            onPressed: () {
+              widget.pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut);
+            },
+          ),
         )
       ]),
     );
