@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:task_1/core/config/app_theme_manager.dart';
 import 'package:task_1/core/config/constants.dart';
 
+typedef bookedFunction = int Function(int);
 class TeacherWidget extends StatefulWidget {
   final String imagePath;
   final String name;
   final String jobTitle;
+  final bookedFunction onClicked;
+  final int bookedNumber;
 
   const TeacherWidget(
       {super.key,
       required this.imagePath,
       required this.name,
-      required this.jobTitle,});
+      required this.jobTitle, required this.onClicked, required this.bookedNumber,
+      });
 
   @override
   State<TeacherWidget> createState() => _TeacherWidgetState();
@@ -19,7 +23,7 @@ class TeacherWidget extends StatefulWidget {
 
 class _TeacherWidgetState extends State<TeacherWidget> {
   bool isBooked = false;
-  int bookedNumber = 0;
+  int increaseBooked = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class _TeacherWidgetState extends State<TeacherWidget> {
             padding: const EdgeInsets.all(6),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Image.asset(widget.imagePath),
                 Text(
@@ -58,9 +62,13 @@ class _TeacherWidgetState extends State<TeacherWidget> {
                   onTap: () {
                     isBooked = !isBooked;
                     if (isBooked) {
-                      bookedNumber++;
+                      increaseBooked++;
+                      widget.onClicked(
+                        increaseBooked
+                      );
                     } else {
-                      bookedNumber--;
+                      increaseBooked--;
+                      widget.onClicked(increaseBooked);
                     }
                     setState(() {});
                   },
@@ -93,28 +101,26 @@ class _TeacherWidgetState extends State<TeacherWidget> {
             ),
           ),
         ),
-        if(isBooked)
-        Positioned(
-            top: -12,
-            left: 120,
-            child: Container(
-              alignment: Alignment.center,
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                  color: AppThemeManager.secColor,
-                  borderRadius: BorderRadius.circular(20)),
-              child: Text("$bookedNumber",
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-              ),),
-            )),
+        if (isBooked)
+          Positioned(
+              top: -12,
+              left: 120,
+              child: Container(
+                alignment: Alignment.center,
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(
+                    color: AppThemeManager.secColor,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  "$increaseBooked",
+                  style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              )),
       ],
     );
-  }
-  calculateBooked() {
-
   }
 }

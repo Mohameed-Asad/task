@@ -76,6 +76,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       textInputAction: widget.action ?? TextInputAction.next,
       focusNode: widget.focusNode,
       decoration: InputDecoration(
+        isDense: true,
         fillColor: Colors.white,
         filled: true,
         suffixIcon: widget.isPassword ?? false
@@ -93,13 +94,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
         prefixIcon: widget.prefixIcon,
         hintText: widget.hint,
         hintStyle: const TextStyle(
-          fontSize: 16,
+          fontFamily: "Poppins",
+          fontSize: 10,
           color: Colors.grey,
-          fontWeight: FontWeight.w500
+          fontWeight: FontWeight.normal,
         ),
         counterText: "",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
           borderSide: const BorderSide(
             color: Colors.black12,
             width: 1,
@@ -107,16 +109,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         // suffix: isPass widget.suffixWidget,
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            const EdgeInsets.symmetric(horizontal: 14,vertical: 8),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
           borderSide: const BorderSide(
             color: Colors.black12,
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
           borderSide: const BorderSide(
             color: Color(0xFF5D3FD3),
             width: 1.5,

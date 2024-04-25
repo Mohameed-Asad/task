@@ -14,14 +14,15 @@ class TeacherScreen extends StatefulWidget {
 }
 
 class _TeacherScreenState extends State<TeacherScreen> {
+  int bookedNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(children: [
         Container(
-          height: 183,
-          width: 428,
+          height: Constants.mediaQuery.height * 0.2,
+          width: Constants.mediaQuery.width,
           decoration: const BoxDecoration(
               color: AppThemeManager.primaryColor,
               borderRadius: BorderRadius.only(
@@ -47,6 +48,7 @@ class _TeacherScreenState extends State<TeacherScreen> {
                     "Please choose your preferred teachers.",
                     style: Constants.theme.textTheme.titleMedium
                         ?.copyWith(fontSize: 19),
+                    textAlign: TextAlign.center,
                   ),
                 ]),
           ),
@@ -55,7 +57,7 @@ class _TeacherScreenState extends State<TeacherScreen> {
           height: 16,
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.only(left: 24, right: 24, bottom: 9),
           child: CustomTextField(
             hint: "Search your preferred teachers",
             prefixIcon: Icon(
@@ -66,39 +68,51 @@ class _TeacherScreenState extends State<TeacherScreen> {
         ),
         Expanded(
           child: GridView(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 17),
+            padding: const EdgeInsets.only(left: 30 , right: 30 , top : 10, bottom: 20),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 childAspectRatio: 0.97,
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
-                mainAxisSpacing: 10),
-            children: const [
+                mainAxisSpacing: 13),
+            children: [
               TeacherWidget(
+                bookedNumber: bookedNumber,
+                onClicked: onClicked,
                 name: "MR. Mohamed Ali",
                 imagePath: "assets/images/mohamedd_ali.png",
                 jobTitle: "Math subject",
               ),
               TeacherWidget(
+                bookedNumber: bookedNumber,
+                onClicked: onClicked,
                 name: "MR. Ahmed Ali",
                 imagePath: "assets/images/Ahmed_Ali.png",
                 jobTitle: "English subject",
               ),
               TeacherWidget(
+                bookedNumber: bookedNumber,
+                onClicked: onClicked,
                 name: "MR. Mohamed Ali",
                 imagePath: "assets/images/mohamed_ali_en.png",
                 jobTitle: "English subject",
               ),
               TeacherWidget(
+                bookedNumber: bookedNumber,
+                onClicked: onClicked,
                 name: "MR. Mohamed Ali",
                 imagePath: "assets/images/mohamed_ali.png",
                 jobTitle: "Math subject",
               ),
               TeacherWidget(
+                bookedNumber: bookedNumber,
+                onClicked: onClicked,
                 name: "MR. Mohamed Ali",
                 imagePath: "assets/images/mohamed_ali_en2.png",
                 jobTitle: "English subject",
               ),
               TeacherWidget(
+                bookedNumber: bookedNumber,
+                onClicked: onClicked,
                 name: "MR. Mohamed Ali",
                 imagePath: "assets/images/mohamed_ali_math.png",
                 jobTitle: "Math subject",
@@ -107,7 +121,7 @@ class _TeacherScreenState extends State<TeacherScreen> {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(bottom: 15,top: 7),
           child: Row(
             children: [
               Expanded(
@@ -156,5 +170,10 @@ class _TeacherScreenState extends State<TeacherScreen> {
         )
       ]),
     );
+  }
+  int onClicked(int bookNumber) {
+    int result = bookedNumber + bookNumber;
+    setState(() {});
+    return bookedNumber = result;
   }
 }
